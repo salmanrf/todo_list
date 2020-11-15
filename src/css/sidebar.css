@@ -1,0 +1,83 @@
+.sidebar {
+    flex-basis: 20%;
+    background: hsl(206, 50%, 90%);
+}
+
+.sidebar-item {
+    width: 100%;
+    padding: 10px 20px;   
+    font-weight: bold;
+    color: rgb(0, 0, 0, 65%);
+    transition: background 250ms ease-in-out;
+    cursor: pointer;
+}
+
+.sidebar-item:hover, .project-items:hover {
+    background: white;   
+}
+
+#today {
+    margin-top: 2em;
+}
+
+.add-icon {
+    margin-right: 5px;
+    width: 15px;
+    height: 2px;
+    background: rgb(0, 0, 0, 65%);
+}
+
+.add-icon::before {
+    content: '';
+    display: block;
+    width: 15px;
+    height: 2px;
+    z-index: 0;
+    transform: rotate(90deg);
+    transform-origin: center;
+    background: rgb(0, 0, 0, 65%);
+}
+
+.project-items {
+    width: 100%;
+    padding: 10px 20px 10px 35px; 
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.project-title {
+    flex-basis: 80%;
+    font-weight: bold;
+    font-size: 1em;
+    color: rgb(0, 0, 0, 45%);
+    transition: background 250ms ease-in-out;
+    overflow: hidden;
+}
+
+.project-priority {
+    width: 12px;
+    height: 12px;
+    border: 0.5px solid rgb(0, 0, 0, 45%);;
+    border-radius: 50%;
+}
+
+#add-project {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px 10px 35px; 
+    font-size: 0.9em;
+    color: rgb(0, 0, 0, 65%);
+    transition: background 250ms ease-in-out;
+    cursor: pointer;
+}
+
+#add-project:hover, 
+.sidebar-item:hover, .project-title:hover {
+    color: hsl(196, 77%, 62%);
+}
+
+#add-project:hover .add-icon, 
+#add-project:hover .add-icon::before {
+    background: hsl(196, 77%, 62%);
+}

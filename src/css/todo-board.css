@@ -1,0 +1,76 @@
+#project-container {
+    flex-basis: 80%;
+    padding: 2em 5em;
+    display: flex;
+    flex-direction: column;
+    background: hsl(0, 0%, 98%);
+}
+
+#project-topbar {
+    width: 80%; 
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: rgb(0, 0, 0, 45%);
+}
+
+#topbar-title {
+    margin-right: 0.4em;
+    font-size: 1.4em;
+}
+
+#topbar-date {
+    padding-top: 0.5em;
+    font-size: 0.8em;
+}
+
+.add-task {
+    width: 70px;
+    height: 25px;
+    margin-top: 1.5em;
+    padding: 0.1em; 
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    box-sizing: content-box;
+    border: 0.1em solid rgb(85, 192, 233, 50%); 
+    transition: background 150ms ease-in-out;
+    cursor: pointer;
+}
+
+.add-task-desc {
+    font-size: 0.8em;
+    font-weight: bolder;
+    color: rgb(85, 192, 233, 100%);
+    pointer-events: none;
+}
+
+.add-task-icon {
+    width: 15px;
+    height: 2px;
+    background: rgb(85, 192, 233, 100%);
+}
+
+.add-task-icon::before {
+    content: '';
+    display: block;
+    width: 15px;
+    height: 2px;
+    z-index: 0;
+    transform: rotate(90deg);
+    transform-origin: center;
+    background: rgb(85, 192, 233, 100%);
+}
+
+.add-task:hover {
+    background: rgb(85, 192, 233, 100%);
+}
+
+.add-task:hover .add-task-desc {
+    color: white;
+} 
+
+.add-task:hover .add-task-icon, 
+.add-task:hover .add-task-icon::before {
+    background: white;
+}

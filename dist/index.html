@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#">
+    <title>Todo List</title>
+<body>
+    <div id="app">
+        <div id="navbar">
+            <div class="hamburger-menu">
+                <div></div>
+            </div>
+            <div id="user-btn">
+                <div id="login-btn">Login</div>
+                <div id="signup-btn">Sign Up</div>
+                <div id="logout-btn">Logout</div>
+            </div>
+        </div>
+        <div id="content">
+            <div class="sidebar">
+                <div id="today" class="sidebar-item">Today</div>
+                <div id="upcoming" class="sidebar-item">Upcoming</div>
+                <div id="project-btn" class="sidebar-item">Projects</div>
+                <div id="add-project" class="sidebar-item">
+                    <div class="add-icon"></div>
+                    <div class="add-project-desc">New Project</div>
+                </div>    
+            </div>
+            <div id="project-container">
+                <div id="project-topbar">
+                    <div id="topbar-title">Today</div>
+                    <div id="topbar-date"></div>
+                </div>
+                <div class="add-task">
+                    <div class="add-task-icon"></div>
+                    <div class="add-task-desc">NEW</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./bundle.js"></script>
+</body>
+</html>
