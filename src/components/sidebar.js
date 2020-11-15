@@ -11,7 +11,7 @@ addProject.addEventListener("click", showProjectForm);
 
 
 export function appendProject(project) {
-    let projectColor = ["rgb(0, 255, 0, 90%)", "rgb(255, 255, 0, 90%)", "rgb(255, 0, 0, 90%)"];
+    let projectColor = ["rgb(0, 255, 0, 50%)", "rgb(255, 255, 0, 50%)", "rgb(255, 0, 0, 50%)"];
 
     const projectItem = document.createElement("div");
     projectItem.setAttribute("class", "project-items");

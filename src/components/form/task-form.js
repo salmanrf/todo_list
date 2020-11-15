@@ -29,6 +29,7 @@ taskHeader.innerHTML = "<div class='menu-title'>New Task</div>";
 const projectForm = document.createElement("form");
 projectForm.setAttribute("class", "modal-form");
 projectForm.setAttribute("id", "project-form");
+projectForm.setAttribute("autocomplete", "off");
 
 // Project form html
 projectForm.innerHTML = "<label for='project-title'>TITLE : </label>" + 

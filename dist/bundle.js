@@ -18601,7 +18601,7 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Raleway&display=swap);"]);
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\n    box-sizing: border-box;\n    margin: 0;\n    padding: 0;\n}\n\nhtml, body {\n    width: 100%;\n    height: 100%;\n    font-family: 'Ubuntu', sans-serif;\n}\n\n#app {\n    display: flex;\n    flex-direction: column;\n    width: 100%;\n    height: 100%;\n}\n\n#navbar {\n    flex-basis: 6%;\n    background: hsl(196, 77%, 62%);\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n\n#content {\n    flex-basis: 94%;\n    display: flex;\n    flex-direction: row;\n    height: 100vh;\n}\n\n#user-btn {\n    margin-right: 1.2em;\n    padding: 10px;\n    color: white;\n    font-weight: bold;\n}\n\n#user-btn div {\n    margin-left: 10px;\n    cursor: pointer;\n}\n\n\n.hamburger-menu {\n    position: relative;\n    width: 25px;\n    height: 25px;\n    margin-left: 20px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.hamburger-menu div {\n    width: 20px;\n    height: 2px;\n    background: white;\n}\n\n.hamburger-menu div::before,\n.hamburger-menu div::after {\n    content: \"\";\n    position: absolute;\n    width: 20px;\n    height: 2px;\n    background: white;\n}\n\n.hamburger-menu div::before {\n    transform: translateY(6px);\n}\n\n.hamburger-menu div::after {\n    transform: translateY(-6px);\n}\n\n.loading-screen {\n    z-index: 9;\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    display: none;\n    background: white;\n}\n\n.loading-image {\n    z-index: 10;\n    position: absolute;\n    width: min(200px, 50%);\n    height: auto;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    display: none;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\n    box-sizing: border-box;\n    margin: 0;\n    padding: 0;\n}\n\nhtml, body {\n    width: 100%;\n    height: 100%;\n    font-family: 'Ubuntu', sans-serif;\n}\n\n#app {\n    display: flex;\n    flex-direction: column;\n    width: 100%;\n    height: 100%;\n}\n\n#navbar {\n    flex-basis: 6%;\n    background: hsl(196, 77%, 62%);\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n\n#content {\n    flex-basis: 94%;\n    display: flex;\n    flex-direction: row;\n    height: 100vh;\n}\n\n#user-btn {\n    margin-right: 1.2em;\n    padding: 10px;\n    display: flex;\n    color: white;\n    font-weight: bold;\n}\n\n#user-btn div {\n    margin-left: 10px;\n    cursor: pointer;\n}\n\n\n.hamburger-menu {\n    position: relative;\n    width: 25px;\n    height: 25px;\n    margin-left: 20px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.hamburger-menu div {\n    width: 20px;\n    height: 2px;\n    background: white;\n}\n\n.hamburger-menu div::before,\n.hamburger-menu div::after {\n    content: \"\";\n    position: absolute;\n    width: 20px;\n    height: 2px;\n    background: white;\n}\n\n.hamburger-menu div::before {\n    transform: translateY(6px);\n}\n\n.hamburger-menu div::after {\n    transform: translateY(-6px);\n}\n\n.loading-screen {\n    z-index: 9;\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    display: none;\n    background: white;\n}\n\n.loading-image {\n    z-index: 10;\n    position: absolute;\n    width: min(200px, 50%);\n    height: auto;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    display: none;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18620,7 +18620,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, "* {\n    box-sizing: border-box;\n    
 ;
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(false);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".overlay {\n    position: fixed;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    display: none;\n    z-index: 6;\n    background: rgb(0, 0, 0, 70%);\n}\n\n.modal-menu {\n    position: fixed;\n    width: 450px;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    display: none;\n    flex-direction: column;\n    z-index: 7;\n    background: white;\n}\n\n.menu-header {\n    flex-basis: 30px;\n    display: flex;\n    align-items: center;\n    height: 30px;\n    padding: 10px;\n    background: rgb(85, 192, 233);\n}\n\n.menu-title {\n    color: white;\n    font-weight: bold;\n}\n\n.modal-form {\n    position: relative;\n    z-index: 8;\n    flex-basis: 90%;\n    display: flex;\n    flex-direction: column;\n    padding: 10px 20px;\n}\n\n.auth-error {\n    width: 80%;\n    margin: 10px auto;\n    padding: 10px;\n    background: #EAA8A8;\n    color: #A22727;\n    font-size: small;\n    text-align: center;\n}\n\nlabel {\n    margin-top: 15px;\n    color: rgb(85, 192, 233);\n    font-weight: bold;\n}\n\ninput, textarea {\n    margin-top: 10px;\n}\n\ninput, textarea {\n    padding: 10px;\n    color: rgb(0, 0, 0, 50%);\n    font-size: large;\n}\n\n.radio-group {\n    display: flex;\n    align-items: center;\n    margin-top: 20px;\n}\n\n.radio-group input, .radio-group label {\n    display: block;\n} \n\n.radio-group input {\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    appearance: none;\n    margin: 0;\n    transform: scale(0.75);\n    border: 5px solid rgb(0, 0, 0, 40%);\n    border-radius: 50%;\n}\n\n.radio-group input:nth-of-type(1) {\n    background: rgb(0, 255, 0, 90%);\n}\n\n.radio-group input:nth-of-type(2) {\n    background: rgb(255, 255, 0, 90%);\n}\n\n.radio-group input:nth-of-type(3) {\n    background: rgb(255, 0, 0, 90%);\n}\n\n.radio-group input:checked {\n    border: 5px solid hsl(196, 77%, 62%);\n}\n\n.radio-group label {\n    margin: 0 15px 0 3px;\n}\n\n.radio-group-prompt {\n    margin-top: 15px;\n    padding: 0;\n    color: rgb(85, 192, 233);\n    font-weight: bold;\n}\n\n.form-buttons {\n    margin-top: 40px;\n    display: flex;\n    justify-content: flex-end;\n    align-items: center;\n}\n\n.submit, .cancel {\n    margin: 0 5px;\n    margin-bottom: 15px;\n    width: 80px;\n    height: 30px;\n    border: 1px solid hsl(196, 77%, 80%);\n}\n\n.submit {\n    background: hsl(196, 77%, 62%);\n    color: white;\n}\n\n.cancel {\n    color: hsl(196, 77%, 62%);\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".overlay {\n    position: fixed;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    display: none;\n    z-index: 6;\n    background: rgb(0, 0, 0, 70%);\n}\n\n.modal-menu {\n    position: fixed;\n    width: 450px;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    display: none;\n    flex-direction: column;\n    z-index: 7;\n    background: white;\n}\n\n.menu-header {\n    flex-basis: 30px;\n    display: flex;\n    align-items: center;\n    height: 30px;\n    padding: 10px;\n    background: rgb(85, 192, 233);\n}\n\n.menu-title {\n    color: white;\n    font-weight: bold;\n}\n\n.modal-form {\n    position: relative;\n    z-index: 8;\n    flex-basis: 90%;\n    display: flex;\n    flex-direction: column;\n    padding: 10px 20px;\n}\n\n.auth-error {\n    width: 80%;\n    margin: 10px auto;\n    padding: 10px;\n    background: #EAA8A8;\n    color: #A22727;\n    font-size: small;\n    text-align: center;\n}\n\nlabel {\n    margin-top: 15px;\n    color: rgb(85, 192, 233);\n    font-weight: bold;\n}\n\ninput, textarea {\n    margin-top: 10px;\n}\n\ninput, textarea {\n    padding: 10px;\n    color: rgb(0, 0, 0, 50%);\n    font-size: large;\n}\n\n.radio-group {\n    display: flex;\n    align-items: center;\n    margin-top: 20px;\n}\n\n.radio-group input, .radio-group label {\n    display: block;\n} \n\n.radio-group input {\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    appearance: none;\n    margin: 0;\n    transform: scale(0.75);\n    border: 5px solid rgb(0, 0, 0, 40%);\n    border-radius: 50%;\n}\n\n.radio-group input:nth-of-type(1) {\n    background: rgb(0, 255, 0, 50%);\n}\n\n.radio-group input:nth-of-type(2) {\n    background: rgb(255, 255, 0, 50%);\n}\n\n.radio-group input:nth-of-type(3) {\n    background: rgb(255, 0, 0, 50%);\n}\n\n.radio-group input:checked {\n    border: 5px solid hsl(196, 77%, 62%);\n}\n\n.radio-group label {\n    margin: 0 15px 0 3px;\n}\n\n.radio-group-prompt {\n    margin-top: 15px;\n    padding: 0;\n    color: rgb(85, 192, 233);\n    font-weight: bold;\n}\n\n.form-buttons {\n    margin-top: 40px;\n    display: flex;\n    justify-content: flex-end;\n    align-items: center;\n}\n\n.submit, .cancel {\n    margin: 0 5px;\n    margin-bottom: 15px;\n    width: 80px;\n    height: 30px;\n    border: 1px solid hsl(196, 77%, 80%);\n}\n\n.submit {\n    background: hsl(196, 77%, 62%);\n    color: white;\n}\n\n.cancel {\n    color: hsl(196, 77%, 62%);\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -19404,6 +19404,7 @@ modalSignup.setAttribute("class", "modal-menu");
 const loginForm = document.createElement("form");
 loginForm.setAttribute("class", "modal-form");
 loginForm.setAttribute("id", "login-form");
+loginForm.setAttribute("autocomplete", "off");
 
 const loginHeader = document.createElement("div");
 loginHeader.setAttribute("class", "menu-header");
@@ -19415,6 +19416,7 @@ modalLogin.appendChild(loginHeader);
 const signUpForm = document.createElement("form");
 signUpForm.setAttribute("class", "modal-form");
 signUpForm.setAttribute("id", "signup-form");
+signUpForm.setAttribute("autocomplete", "off");
 
 const signupHeader = document.createElement("div");
 signupHeader.setAttribute("class", "menu-header");
@@ -21964,6 +21966,7 @@ taskHeader.innerHTML = "<div class='menu-title'>New Task</div>";
 const projectForm = document.createElement("form");
 projectForm.setAttribute("class", "modal-form");
 projectForm.setAttribute("id", "project-form");
+projectForm.setAttribute("autocomplete", "off");
 
 // Project form html
 projectForm.innerHTML = "<label for='project-title'>TITLE : </label>" + 
@@ -22036,7 +22039,7 @@ addProject.addEventListener("click", showProjectForm);
 
 
 function appendProject(project) {
-    let projectColor = ["rgb(0, 255, 0, 90%)", "rgb(255, 255, 0, 90%)", "rgb(255, 0, 0, 90%)"];
+    let projectColor = ["rgb(0, 255, 0, 50%)", "rgb(255, 255, 0, 50%)", "rgb(255, 0, 0, 50%)"];
 
     const projectItem = document.createElement("div");
     projectItem.setAttribute("class", "project-items");
@@ -22691,11 +22694,11 @@ user_handler_loginForm.addEventListener("submit", event => {
 
     auth.signInWithEmailAndPassword(email, password)
         .then(() => {
-            // Wait for authentication process then hide the loading screen
-            loading_screen.hide();
-        
             // Close modal form
             hideUserForm();
+
+            // Wait for authentication process then hide the loading screen
+            loading_screen.hide();
 
             // Clear input fields
             event.target.reset();
@@ -22772,7 +22775,7 @@ auth.onAuthStateChanged(user => {
 
     const submitWrapper = event => {
         event.preventDefault();
-        submitProject(user.uid);
+        submitProject();
     }
 
     const errorWrapper = event => {
@@ -22786,46 +22789,22 @@ auth.onAuthStateChanged(user => {
             todo_handler_projectForm.addEventListener("submit", submitWrapper);
         })())
         .then(() => {
-            database.ref(`users/${user.uid}/projects/`).once("value", data => {
+            database.ref(`users/${user.uid}/projects`).once("value", data => {
                 if(!data.exists()) {
                     loading_screen.hide();
+                    database.ref(`users/${user.uid}/projects`).on("child_added", data => {
+                        Promise.resolve(appendProject(data.val()))
+                            .then(() => loading_screen.hide());
+                    })
                 } else {
-                    database.ref(`users/${user.uid}/projects/`).on("child_added", data => {
+                    // Needs to refresh after submitting project to be activate this callback
+                    database.ref(`users/${user.uid}/projects`).on("child_added", data => {
                         Promise.resolve(appendProject(data.val()))
                             .then(() => loading_screen.hide());
                     })
                 }
             })
         })
-
-        // projectsPath.once("value", data => {
-        //     if(!data.exists()) {
-        //         loadingScreen.hide();
-        //     } else {
-        //         projectsPath.once("value")
-        //         // The returned value is an object, therefore needs conversion to array
-        //             .then(projects => {
-        //                 Promise.resolve(createProjectList(projects.val()))
-        //                     .then(result => {                        
-        //                     // Loading screen will be closed after appendProjectAll() is finished
-        //                         Promise.resolve(appendProjectAll(result))
-        //                             .then(() => loadingScreen.hide());
-        //                     })
-        //             })
-        //     }
-        // })
-
-        // // Retrieve user's projects from the database
-        // database.ref(`users/${user.uid}/projects`).once("value")
-        //     // The returned value is an object, therefore needs conversion to array
-        //     .then(projects => {
-        //         Promise.resolve(createProjectList(projects.val()))
-        //             .then(result => {                        
-        //                 // Loading screen will be closed after appendProjectAll() is finished
-        //                 Promise.resolve(appendProjectAll(result))
-        //                     .then(() => loadingScreen.hide());
-        //             })
-        //     }) 
     } else {
         Promise.resolve((function() {
             removeProjectAll()
@@ -22837,39 +22816,38 @@ auth.onAuthStateChanged(user => {
 })
 
 // Convert a user's projects object and converts it to array
-function createProjectList(projects) {
-    const projectIds = Object.keys(projects);
-    const projectList = [];
+// function createProjectList(projects) {
+//     const projectIds = Object.keys(projects);
+//     const projectList = [];
 
-    for(let i = 0; i < projectIds.length; i++) {
-        projectList.push({
-            title: projects[projectIds[i]].title,
-            description: projects[projectIds[i]].description,
-            duedate: projects[projectIds[i]].duedate,
-            priority: projects[projectIds[i]].priority,
-        })
-    }
+//     for(let i = 0; i < projectIds.length; i++) {
+//         projectList.push({
+//             title: projects[projectIds[i]].title,
+//             description: projects[projectIds[i]].description,
+//             duedate: projects[projectIds[i]].duedate,
+//             priority: projects[projectIds[i]].priority,
+//         })
+//     }
 
-    return projectList;
-}
+//     return projectList;
+// }
 
-function submitProject(uid) {
-    console.log(uid);
+function submitProject() {
     // Show loading screen on form
     loading_screen.showOn(todo_handler_projectForm);
 
-    if(!uid) {
+    // // Disables submit button while processing current submission
+    const submitBtn = document.querySelector("#create-project");
+    submitBtn.disabled = true;
+
+    if(!auth.currentUser.uid) {
         todo_handler_throwError(todo_handler_projectForm, error);
         loading_screen.hide();
         
         return null;
     }
 
-    const newProjectRef = database.ref(`users/${uid}/projects/`).push();
-
-    // // Disables submit button while processing current submission
-    // const submitBtn = document.querySelector("#create-project");
-    // submitBtn.setAttribute("disabled", true);
+    const newProjectRef = database.ref(`users/${auth.currentUser.uid}/projects/`).push();
 
     // Reset and remove any errors, if any
     resetSubmitError();
@@ -22882,6 +22860,7 @@ function submitProject(uid) {
     // Push new project to user's project list
     newProjectRef.set({title, description, duedate, priority})
         .then(() => {
+            submitBtn.disabled = false;
             // Wait for authentication process then hide the loading screen
             loading_screen.hide();
 
@@ -22894,10 +22873,12 @@ function submitProject(uid) {
             // Clear input fields
             todo_handler_projectForm.reset();
     }).catch(error => {
+        submitBtn.disabled = false;
         todo_handler_throwError(todo_handler_projectForm, error);
         loading_screen.hide();
         // submitBtn.setAttribute("disabled", false);
     })
+    submitBtn.setAttribute("disabled", false);
 }
 
 function todo_handler_throwError(form, error) {

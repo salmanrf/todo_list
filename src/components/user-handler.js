@@ -43,11 +43,11 @@ loginForm.addEventListener("submit", event => {
 
     auth.signInWithEmailAndPassword(email, password)
         .then(() => {
-            // Wait for authentication process then hide the loading screen
-            loadingScreen.hide();
-        
             // Close modal form
             hideUserForm();
+
+            // Wait for authentication process then hide the loading screen
+            loadingScreen.hide();
 
             // Clear input fields
             event.target.reset();

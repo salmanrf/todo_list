@@ -38,6 +38,7 @@ html, body {
 #user-btn {
     margin-right: 1.2em;
     padding: 10px;
+    display: flex;
     color: white;
     font-weight: bold;
 }

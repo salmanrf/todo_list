@@ -18,6 +18,7 @@ modalSignup.setAttribute("class", "modal-menu");
 const loginForm = document.createElement("form");
 loginForm.setAttribute("class", "modal-form");
 loginForm.setAttribute("id", "login-form");
+loginForm.setAttribute("autocomplete", "off");
 
 const loginHeader = document.createElement("div");
 loginHeader.setAttribute("class", "menu-header");
@@ -29,6 +30,7 @@ modalLogin.appendChild(loginHeader);
 const signUpForm = document.createElement("form");
 signUpForm.setAttribute("class", "modal-form");
 signUpForm.setAttribute("id", "signup-form");
+signUpForm.setAttribute("autocomplete", "off");
 
 const signupHeader = document.createElement("div");
 signupHeader.setAttribute("class", "menu-header");

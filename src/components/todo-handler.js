@@ -1,7 +1,7 @@
 import {auth, database} from "./firebase-setup";
 import loadingScreen from "./loading-screen";
 import {hideTaskForm} from "./form/task-form";
-import {appendProject, appendProjectAll, removeProjectAll} from "./sidebar";
+import {appendProject, removeProjectAll} from "./sidebar";
 
 const projectForm = document.querySelector("#project-form");
 const taskForm = document.querySelector("#task-form");
@@ -14,7 +14,7 @@ auth.onAuthStateChanged(user => {
 
     const submitWrapper = event => {
         event.preventDefault();
-        submitProject(user.uid);
+        submitProject();
     }
 
     const errorWrapper = event => {
@@ -28,46 +28,22 @@ auth.onAuthStateChanged(user => {
             projectForm.addEventListener("submit", submitWrapper);
         })())
         .then(() => {
-            database.ref(`users/${user.uid}/projects/`).once("value", data => {
+            database.ref(`users/${user.uid}/projects`).once("value", data => {
                 if(!data.exists()) {
                     loadingScreen.hide();
+                    database.ref(`users/${user.uid}/projects`).on("child_added", data => {
+                        Promise.resolve(appendProject(data.val()))
+                            .then(() => loadingScreen.hide());
+                    })
                 } else {
-                    database.ref(`users/${user.uid}/projects/`).on("child_added", data => {
+                    // Needs to refresh after submitting project to be activate this callback
+                    database.ref(`users/${user.uid}/projects`).on("child_added", data => {
                         Promise.resolve(appendProject(data.val()))
                             .then(() => loadingScreen.hide());
                     })
                 }
             })
         })
-
-        // projectsPath.once("value", data => {
-        //     if(!data.exists()) {
-        //         loadingScreen.hide();
-        //     } else {
-        //         projectsPath.once("value")
-        //         // The returned value is an object, therefore needs conversion to array
-        //             .then(projects => {
-        //                 Promise.resolve(createProjectList(projects.val()))
-        //                     .then(result => {                        
-        //                     // Loading screen will be closed after appendProjectAll() is finished
-        //                         Promise.resolve(appendProjectAll(result))
-        //                             .then(() => loadingScreen.hide());
-        //                     })
-        //             })
-        //     }
-        // })
-
-        // // Retrieve user's projects from the database
-        // database.ref(`users/${user.uid}/projects`).once("value")
-        //     // The returned value is an object, therefore needs conversion to array
-        //     .then(projects => {
-        //         Promise.resolve(createProjectList(projects.val()))
-        //             .then(result => {                        
-        //                 // Loading screen will be closed after appendProjectAll() is finished
-        //                 Promise.resolve(appendProjectAll(result))
-        //                     .then(() => loadingScreen.hide());
-        //             })
-        //     }) 
     } else {
         Promise.resolve((function() {
             removeProjectAll()
@@ -79,39 +55,38 @@ auth.onAuthStateChanged(user => {
 })
 
 // Convert a user's projects object and converts it to array
-function createProjectList(projects) {
-    const projectIds = Object.keys(projects);
-    const projectList = [];
+// function createProjectList(projects) {
+//     const projectIds = Object.keys(projects);
+//     const projectList = [];
 
-    for(let i = 0; i < projectIds.length; i++) {
-        projectList.push({
-            title: projects[projectIds[i]].title,
-            description: projects[projectIds[i]].description,
-            duedate: projects[projectIds[i]].duedate,
-            priority: projects[projectIds[i]].priority,
-        })
-    }
+//     for(let i = 0; i < projectIds.length; i++) {
+//         projectList.push({
+//             title: projects[projectIds[i]].title,
+//             description: projects[projectIds[i]].description,
+//             duedate: projects[projectIds[i]].duedate,
+//             priority: projects[projectIds[i]].priority,
+//         })
+//     }
 
-    return projectList;
-}
+//     return projectList;
+// }
 
-function submitProject(uid) {
-    console.log(uid);
+function submitProject() {
     // Show loading screen on form
     loadingScreen.showOn(projectForm);
 
-    if(!uid) {
+    // // Disables submit button while processing current submission
+    const submitBtn = document.querySelector("#create-project");
+    submitBtn.disabled = true;
+
+    if(!auth.currentUser.uid) {
         throwError(projectForm, error);
         loadingScreen.hide();
         
         return null;
     }
 
-    const newProjectRef = database.ref(`users/${uid}/projects/`).push();
-
-    // // Disables submit button while processing current submission
-    // const submitBtn = document.querySelector("#create-project");
-    // submitBtn.setAttribute("disabled", true);
+    const newProjectRef = database.ref(`users/${auth.currentUser.uid}/projects/`).push();
 
     // Reset and remove any errors, if any
     resetSubmitError();
@@ -124,6 +99,7 @@ function submitProject(uid) {
     // Push new project to user's project list
     newProjectRef.set({title, description, duedate, priority})
         .then(() => {
+            submitBtn.disabled = false;
             // Wait for authentication process then hide the loading screen
             loadingScreen.hide();
 
@@ -136,10 +112,12 @@ function submitProject(uid) {
             // Clear input fields
             projectForm.reset();
     }).catch(error => {
+        submitBtn.disabled = false;
         throwError(projectForm, error);
         loadingScreen.hide();
         // submitBtn.setAttribute("disabled", false);
     })
+    submitBtn.setAttribute("disabled", false);
 }
 
 function throwError(form, error) {
