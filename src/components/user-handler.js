@@ -6,7 +6,7 @@ import loadingScreen from "./loading-screen";
 const logout = document.querySelector("#logout-btn");
 logout.addEventListener("click", () => {
     loadingScreen.show();
-    auth.signOut().then(() => loadingScreen.hide());
+    auth.signOut().then(loadingScreen.hide);
 });
 
 // Listens for authentication state changes

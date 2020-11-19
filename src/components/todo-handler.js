@@ -12,66 +12,56 @@ submitErrorMsg.setAttribute("class", "auth-error");
 auth.onAuthStateChanged(user => {
     loadingScreen.show();
 
-    const submitWrapper = event => {
-        event.preventDefault();
-        submitProject();
-    }
-
-    const errorWrapper = event => {
-        event.preventDefault();
-        throwError(projectForm, null);       
-    }
-
     if(user) { 
-        Promise.resolve((function() {
-            projectForm.removeEventListener("submit", errorWrapper);
-            projectForm.addEventListener("submit", submitWrapper);
-        })())
-        .then(() => {
-            database.ref(`users/${user.uid}/projects`).once("value", data => {
-                if(!data.exists()) {
-                    loadingScreen.hide();
-                    database.ref(`users/${user.uid}/projects`).on("child_added", data => {
-                        Promise.resolve(appendProject(data.val()))
-                            .then(() => loadingScreen.hide());
-                    })
-                } else {
-                    // Needs to refresh after submitting project to be activate this callback
-                    database.ref(`users/${user.uid}/projects`).on("child_added", data => {
-                        Promise.resolve(appendProject(data.val()))
-                            .then(() => loadingScreen.hide());
-                    })
-                }
-            })
+        projectForm.removeEventListener("submit", throwError);
+        projectForm.addEventListener("submit", submitProject);
+
+        // Get this user's projects ref
+        const projectsRef = database.ref(`users/${user.uid}/projects`);
+        console.log(user.uid);
+        // Use once() to get value from this ref only once
+        projectsRef.once("value", data => {
+            // data.exist() checks if any data exist in this reference
+            if(!data.exists()) {
+                // If not, immediately closes the loading screen and...
+                loadingScreen.hide();
+                // Register a listener on this ref
+                projectsRef.on("child_added", data => {
+                    new Promise(resolve => {
+                        loadingScreen.show();
+                        appendProject(data.val());
+                        console.log("ashiaap");
+                        resolve();
+                    }).then(loadingScreen.hide);
+                    // Promise.resolve(appendProject(data.val()))
+                    //     .then(loadingScreen.hide);
+                })
+            } else {
+                // If data exist, invoke appendProject() to create and... 
+                // append dom node for each data (the user's projects)
+                projectsRef.on("child_added", data => {
+                    new Promise(resolve => {
+                        loadingScreen.show();
+                        appendProject(data.val());
+                        console.log("anjalathi");
+                        resolve();
+                    }).then(loadingScreen.hide);
+                    // Promise.resolve(appendProject(data.val()))
+                    //     .then(loadingScreen.hide);
+                })
+            }
         })
     } else {
-        Promise.resolve((function() {
-            removeProjectAll()
-            projectForm.removeEventListener("submit", submitWrapper);
-            projectForm.addEventListener("submit", errorWrapper);
-        })())
-        .then(() => loadingScreen.hide());
+        removeProjectAll()
+        projectForm.removeEventListener("submit", submitProject);
+        projectForm.addEventListener("submit", throwError);
+        loadingScreen.hide();
     }
 })
 
-// Convert a user's projects object and converts it to array
-// function createProjectList(projects) {
-//     const projectIds = Object.keys(projects);
-//     const projectList = [];
+function submitProject(event) {
+    event.preventDefault();
 
-//     for(let i = 0; i < projectIds.length; i++) {
-//         projectList.push({
-//             title: projects[projectIds[i]].title,
-//             description: projects[projectIds[i]].description,
-//             duedate: projects[projectIds[i]].duedate,
-//             priority: projects[projectIds[i]].priority,
-//         })
-//     }
-
-//     return projectList;
-// }
-
-function submitProject() {
     // Show loading screen on form
     loadingScreen.showOn(projectForm);
 
@@ -79,14 +69,7 @@ function submitProject() {
     const submitBtn = document.querySelector("#create-project");
     submitBtn.disabled = true;
 
-    if(!auth.currentUser.uid) {
-        throwError(projectForm, error);
-        loadingScreen.hide();
-        
-        return null;
-    }
-
-    const newProjectRef = database.ref(`users/${auth.currentUser.uid}/projects/`).push();
+    const projectsRef = database.ref(`users/${auth.currentUser.uid}/projects/`);
 
     // Reset and remove any errors, if any
     resetSubmitError();
@@ -97,31 +80,30 @@ function submitProject() {
     let priority = projectForm["project_priority"].value;
 
     // Push new project to user's project list
-    newProjectRef.set({title, description, duedate, priority})
+    projectsRef.push({title, description, duedate, priority})
         .then(() => {
+            // Enables sumbit button
             submitBtn.disabled = false;
+            
+            // Clear input fields
+            projectForm.reset();
+            
             // Wait for authentication process then hide the loading screen
             loadingScreen.hide();
 
-            // Enables sumbit button
-            // submitBtn.setAttribute("disabled", false);
-
             // Close modal form
             hideTaskForm();
-
-            // Clear input fields
-            projectForm.reset();
     }).catch(error => {
         submitBtn.disabled = false;
-        throwError(projectForm, error);
+        throwError(event, error);
         loadingScreen.hide();
-        // submitBtn.setAttribute("disabled", false);
     })
-    submitBtn.setAttribute("disabled", false);
+
 }
 
-function throwError(form, error) {
-    form.appendChild(submitErrorMsg);
+function throwError(event, error) {
+    event.preventDefault();
+    event.target.appendChild(submitErrorMsg);
 
     if(error) 
         submitErrorMsg.textContent = error.message;

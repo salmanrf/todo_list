@@ -18639,7 +18639,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".overlay {\n    position: fixed;\n    
 ;
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(false);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".sidebar {\n    flex-basis: 20%;\n    background: hsl(206, 50%, 90%);\n}\n\n.sidebar-item {\n    width: 100%;\n    padding: 10px 20px;   \n    font-weight: bold;\n    color: rgb(0, 0, 0, 65%);\n    transition: background 250ms ease-in-out;\n    cursor: pointer;\n}\n\n.sidebar-item:hover, .project-items:hover {\n    background: white;   \n}\n\n#today {\n    margin-top: 2em;\n}\n\n.add-icon {\n    margin-right: 5px;\n    width: 15px;\n    height: 2px;\n    background: rgb(0, 0, 0, 65%);\n}\n\n.add-icon::before {\n    content: '';\n    display: block;\n    width: 15px;\n    height: 2px;\n    z-index: 0;\n    transform: rotate(90deg);\n    transform-origin: center;\n    background: rgb(0, 0, 0, 65%);\n}\n\n.project-items {\n    width: 100%;\n    padding: 10px 20px 10px 35px; \n    display: flex;\n    align-items: center;\n    cursor: pointer;\n}\n\n.project-title {\n    flex-basis: 80%;\n    font-weight: bold;\n    font-size: 1em;\n    color: rgb(0, 0, 0, 45%);\n    transition: background 250ms ease-in-out;\n    overflow: hidden;\n}\n\n.project-priority {\n    width: 12px;\n    height: 12px;\n    border: 0.5px solid rgb(0, 0, 0, 45%);;\n    border-radius: 50%;\n}\n\n#add-project {\n    display: flex;\n    align-items: center;\n    padding: 10px 20px 10px 35px; \n    font-size: 0.9em;\n    color: rgb(0, 0, 0, 65%);\n    transition: background 250ms ease-in-out;\n    cursor: pointer;\n}\n\n#add-project:hover, \n.sidebar-item:hover, .project-title:hover {\n    color: hsl(196, 77%, 62%);\n}\n\n#add-project:hover .add-icon, \n#add-project:hover .add-icon::before {\n    background: hsl(196, 77%, 62%);\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".sidebar {\n    flex-basis: 20%;\n    background: hsl(206, 50%, 90%);\n}\n\n.sidebar-item {\n    width: 100%;\n    padding: 10px 20px;   \n    font-weight: bold;\n    color: rgb(0, 0, 0, 65%);\n    transition: background 250ms ease-in-out;\n    cursor: pointer;\n}\n\n.sidebar-item:hover, .project-items:hover {\n    background: white;   \n}\n\n#today {\n    margin-top: 2em;\n}\n\n.add-icon {\n    margin-right: 5px;\n    width: 15px;\n    height: 2px;\n    background: rgb(0, 0, 0, 65%);\n}\n\n.add-icon::before {\n    content: '';\n    display: block;\n    width: 15px;\n    height: 2px;\n    z-index: 0;\n    transform: rotate(90deg);\n    transform-origin: center;\n    background: rgb(0, 0, 0, 65%);\n}\n\n#project-list {\n    transition: height 250ms ease-in-out;\n    overflow: hidden;\n}\n\n.project-items {\n    width: 100%;\n    padding: 10px 20px 10px 35px; \n    display: flex;\n    align-items: center;\n    cursor: pointer;\n}\n\n.project-items div {\n    margin-left: 5px;\n}\n\n.project-title {\n    flex-basis: 80%;\n    font-weight: bold;\n    font-size: 1em;\n    color: rgb(0, 0, 0, 45%);\n    transition: color 250ms ease-in-out;\n    overflow: hidden;\n}\n\n.project-priority {\n    width: 12px;\n    height: 12px;\n    border: 0.5px solid rgb(0, 0, 0, 45%);;\n    border-radius: 50%;\n}\n\n#add-project {\n    display: flex;\n    align-items: center;\n    padding: 10px 20px 10px 35px; \n    font-size: 0.9em;\n    color: rgb(0, 0, 0, 65%);\n    transition: background 250ms ease-in-out;\n    cursor: pointer;\n}\n\n#add-project:hover, \n.sidebar-item:hover, .project-items:hover .project-title {\n    color: hsl(196, 77%, 62%);\n}\n\n#add-project:hover .add-icon, \n#add-project:hover .add-icon::before {\n    background: hsl(196, 77%, 62%);\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -22032,11 +22032,27 @@ const sidebar = document.querySelector(".sidebar");
 
 const today = document.querySelector("#today");
 const upcoming = document.querySelector("#upcoming");
-const projectBtn = document.querySelector("#project-list");
+const projectBtn = document.querySelector("#project-btn");
+const projectList = document.querySelector("#project-list");
 
 const addProject = document.querySelector("#add-project");
 addProject.addEventListener("click", showProjectForm);
 
+projectBtn.addEventListener("click", toggleProjects);
+
+let show = false;
+let height = projectList.offsetHeight;
+
+function toggleProjects() {
+    if(show) {
+        projectList.style.height = height + "px";
+        show = !show;    
+    }
+    else {
+        projectList.style.height = (height * 0) + "0px";
+        show = !show;
+    }
+}   
 
 function appendProject(project) {
     let projectColor = ["rgb(0, 255, 0, 50%)", "rgb(255, 255, 0, 50%)", "rgb(255, 0, 0, 50%)"];
@@ -22057,7 +22073,8 @@ function appendProject(project) {
         projectItem.appendChild(projectPriority);
     }
 
-    sidebar.insertBefore(projectItem, addProject);
+    projectList.appendChild(projectItem);
+    height = projectList.offsetHeight;
 }
 
 function appendProjectAll(PROJECTS) {
@@ -22080,15 +22097,16 @@ function appendProjectAll(PROJECTS) {
             projectItem.appendChild(projectPriority);
         }
 
-        sidebar.insertBefore(projectItem, addProject);
+        projectList.appendChild(projectItem);
     }
 }
 
 function removeProjectAll() {
-    let projectItems = document.querySelectorAll(".project-items");
-    for(let pr of projectItems) {
+    let projectITEMS = document.querySelectorAll(".project-items");
+    for(let pr of projectITEMS) {
         pr.remove();
     }
+    projectList.style.height = (height * 0) + "0px";
 }
 
 // CONCATENATED MODULE: ./src/components/task-container.js
@@ -22621,7 +22639,7 @@ loadingImg.setAttribute("src", liskarm_unscreen);
 
 loadingScreen.appendChild(loadingImg);
 
-function show(background) {
+function loading_screen_show(background) {
     appContainer.appendChild(loadingScreen);
 
     if(background != null && background != "")
@@ -22647,7 +22665,7 @@ function hide() {
     loadingImg.style.display = "none";
 }
 
-/* harmony default export */ const loading_screen = ({show, showOn, hide});
+/* harmony default export */ const loading_screen = ({show: loading_screen_show, showOn, hide});
 // CONCATENATED MODULE: ./src/components/user-handler.js
 ;
 
@@ -22657,7 +22675,7 @@ function hide() {
 const logout = document.querySelector("#logout-btn");
 logout.addEventListener("click", () => {
     loading_screen.show();
-    auth.signOut().then(() => loading_screen.hide());
+    auth.signOut().then(loading_screen.hide);
 });
 
 // Listens for authentication state changes
@@ -22773,66 +22791,56 @@ submitErrorMsg.setAttribute("class", "auth-error");
 auth.onAuthStateChanged(user => {
     loading_screen.show();
 
-    const submitWrapper = event => {
-        event.preventDefault();
-        submitProject();
-    }
-
-    const errorWrapper = event => {
-        event.preventDefault();
-        todo_handler_throwError(todo_handler_projectForm, null);       
-    }
-
     if(user) { 
-        Promise.resolve((function() {
-            todo_handler_projectForm.removeEventListener("submit", errorWrapper);
-            todo_handler_projectForm.addEventListener("submit", submitWrapper);
-        })())
-        .then(() => {
-            database.ref(`users/${user.uid}/projects`).once("value", data => {
-                if(!data.exists()) {
-                    loading_screen.hide();
-                    database.ref(`users/${user.uid}/projects`).on("child_added", data => {
-                        Promise.resolve(appendProject(data.val()))
-                            .then(() => loading_screen.hide());
-                    })
-                } else {
-                    // Needs to refresh after submitting project to be activate this callback
-                    database.ref(`users/${user.uid}/projects`).on("child_added", data => {
-                        Promise.resolve(appendProject(data.val()))
-                            .then(() => loading_screen.hide());
-                    })
-                }
-            })
+        todo_handler_projectForm.removeEventListener("submit", todo_handler_throwError);
+        todo_handler_projectForm.addEventListener("submit", submitProject);
+
+        // Get this user's projects ref
+        const projectsRef = database.ref(`users/${user.uid}/projects`);
+        console.log(user.uid);
+        // Use once() to get value from this ref only once
+        projectsRef.once("value", data => {
+            // data.exist() checks if any data exist in this reference
+            if(!data.exists()) {
+                // If not, immediately closes the loading screen and...
+                loading_screen.hide();
+                // Register a listener on this ref
+                projectsRef.on("child_added", data => {
+                    new Promise(resolve => {
+                        loading_screen.show();
+                        appendProject(data.val());
+                        console.log("ashiaap");
+                        resolve();
+                    }).then(loading_screen.hide);
+                    // Promise.resolve(appendProject(data.val()))
+                    //     .then(loadingScreen.hide);
+                })
+            } else {
+                // If data exist, invoke appendProject() to create and... 
+                // append dom node for each data (the user's projects)
+                projectsRef.on("child_added", data => {
+                    new Promise(resolve => {
+                        loading_screen.show();
+                        appendProject(data.val());
+                        console.log("anjalathi");
+                        resolve();
+                    }).then(loading_screen.hide);
+                    // Promise.resolve(appendProject(data.val()))
+                    //     .then(loadingScreen.hide);
+                })
+            }
         })
     } else {
-        Promise.resolve((function() {
-            removeProjectAll()
-            todo_handler_projectForm.removeEventListener("submit", submitWrapper);
-            todo_handler_projectForm.addEventListener("submit", errorWrapper);
-        })())
-        .then(() => loading_screen.hide());
+        removeProjectAll()
+        todo_handler_projectForm.removeEventListener("submit", submitProject);
+        todo_handler_projectForm.addEventListener("submit", todo_handler_throwError);
+        loading_screen.hide();
     }
 })
 
-// Convert a user's projects object and converts it to array
-// function createProjectList(projects) {
-//     const projectIds = Object.keys(projects);
-//     const projectList = [];
+function submitProject(event) {
+    event.preventDefault();
 
-//     for(let i = 0; i < projectIds.length; i++) {
-//         projectList.push({
-//             title: projects[projectIds[i]].title,
-//             description: projects[projectIds[i]].description,
-//             duedate: projects[projectIds[i]].duedate,
-//             priority: projects[projectIds[i]].priority,
-//         })
-//     }
-
-//     return projectList;
-// }
-
-function submitProject() {
     // Show loading screen on form
     loading_screen.showOn(todo_handler_projectForm);
 
@@ -22840,14 +22848,7 @@ function submitProject() {
     const submitBtn = document.querySelector("#create-project");
     submitBtn.disabled = true;
 
-    if(!auth.currentUser.uid) {
-        todo_handler_throwError(todo_handler_projectForm, error);
-        loading_screen.hide();
-        
-        return null;
-    }
-
-    const newProjectRef = database.ref(`users/${auth.currentUser.uid}/projects/`).push();
+    const projectsRef = database.ref(`users/${auth.currentUser.uid}/projects/`);
 
     // Reset and remove any errors, if any
     resetSubmitError();
@@ -22858,31 +22859,30 @@ function submitProject() {
     let priority = todo_handler_projectForm["project_priority"].value;
 
     // Push new project to user's project list
-    newProjectRef.set({title, description, duedate, priority})
+    projectsRef.push({title, description, duedate, priority})
         .then(() => {
+            // Enables sumbit button
             submitBtn.disabled = false;
+            
+            // Clear input fields
+            todo_handler_projectForm.reset();
+            
             // Wait for authentication process then hide the loading screen
             loading_screen.hide();
 
-            // Enables sumbit button
-            // submitBtn.setAttribute("disabled", false);
-
             // Close modal form
             hideTaskForm();
-
-            // Clear input fields
-            todo_handler_projectForm.reset();
     }).catch(error => {
         submitBtn.disabled = false;
-        todo_handler_throwError(todo_handler_projectForm, error);
+        todo_handler_throwError(event, error);
         loading_screen.hide();
-        // submitBtn.setAttribute("disabled", false);
     })
-    submitBtn.setAttribute("disabled", false);
+
 }
 
-function todo_handler_throwError(form, error) {
-    form.appendChild(submitErrorMsg);
+function todo_handler_throwError(event, error) {
+    event.preventDefault();
+    event.target.appendChild(submitErrorMsg);
 
     if(error) 
         submitErrorMsg.textContent = error.message;

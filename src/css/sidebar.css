@@ -38,6 +38,11 @@
     background: rgb(0, 0, 0, 65%);
 }
 
+#project-list {
+    transition: height 250ms ease-in-out;
+    overflow: hidden;
+}
+
 .project-items {
     width: 100%;
     padding: 10px 20px 10px 35px; 
@@ -46,12 +51,16 @@
     cursor: pointer;
 }
 
+.project-items div {
+    margin-left: 5px;
+}
+
 .project-title {
     flex-basis: 80%;
     font-weight: bold;
     font-size: 1em;
     color: rgb(0, 0, 0, 45%);
-    transition: background 250ms ease-in-out;
+    transition: color 250ms ease-in-out;
     overflow: hidden;
 }
 
@@ -73,7 +82,7 @@
 }
 
 #add-project:hover, 
-.sidebar-item:hover, .project-title:hover {
+.sidebar-item:hover, .project-items:hover .project-title {
     color: hsl(196, 77%, 62%);
 }
 
