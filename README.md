@@ -1,1 +1,1 @@
-# todo_list
+Todo List App with Vanila Javascript and Firebase 
